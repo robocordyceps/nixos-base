@@ -2,7 +2,12 @@
 # hardware-configuration.nix, then run `nixos-rebuild switch`.
 { pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./disko-config.nix
+    # Pin a commit/tag for reproducibility once the layout is finalized.
+    "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
