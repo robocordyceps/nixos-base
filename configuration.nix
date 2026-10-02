@@ -1,5 +1,6 @@
-# Minimal bootstrap config. Copy to /etc/nixos/ next to the generated
-# hardware-configuration.nix, then run `nixos-rebuild switch`.
+# Minimal bootstrap config, used through flake.nix (see README).
+# Filesystems come from disko.nix; hardware-configuration.nix must be
+# generated with `nixos-generate-config --no-filesystems`.
 { pkgs, ... }:
 {
   imports = [ ./hardware-configuration.nix ];
